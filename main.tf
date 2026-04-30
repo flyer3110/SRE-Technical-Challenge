@@ -40,13 +40,13 @@ module "vpc" {
 
   subnets = [
     {
-      tag               = "application"
+      tag               = "management"
       cidr              = "10.1.1.0/24"
       type              = "public"
       availability_zone = data.aws_availability_zones.available.names[0]
     },
     {
-      tag               = "management"
+      tag               = "application"
       cidr              = "10.1.2.0/24"
       type              = "private"
       availability_zone = data.aws_availability_zones.available.names[0]
