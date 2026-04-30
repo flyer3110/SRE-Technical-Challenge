@@ -1,13 +1,13 @@
 locals {
-  alb_public_subnet_ids = values(module.vpc.public_subnets)
+  alb_private_subnet_ids = values(module.vpc.private_subnets)
 }
 
 resource "aws_lb" "app" {
   name               = "sre-app-alb"
-  internal           = false
+  internal           = true
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb.id]
-  subnets            = local.alb_public_subnet_ids
+  subnets            = local.alb_private_subnet_ids
 
   tags = {
     Name = "sre-app-alb"
