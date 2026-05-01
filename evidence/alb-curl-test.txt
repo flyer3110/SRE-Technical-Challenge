@@ -1,0 +1,22 @@
+ALB Curl Test Evidence
+Date: 2026-05-01
+Test Location: Management EC2 instance
+Test Command:
+curl http://internal-sre-app-alb-51980652.us-east-1.elb.amazonaws.com
+
+Result:
+<html>
+  <head>
+    <title>SRE Technical Challenge</title>
+  </head>
+  <body>
+    <h1>SRE Technical Challenge</h1>
+    <p>Apache is running on RHEL 9.</p>
+    <p>Hostname: ip-10-1-2-144.ec2.internal</p>
+  </body>
+</html>
+
+Validation:
+- Management EC2 can reach the internal ALB over HTTP.
+- Internal ALB forwards traffic to an application EC2 instance.
+- Apache is running successfully on the application tier.
