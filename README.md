@@ -33,6 +33,9 @@ The goal of this design is to demonstrate secure network segmentation, controlle
 | Load Balancer | Internal Application Load Balancer |
 | NAT Gateway | Provides outbound internet access for private subnets |
 | Logging | VPC Flow Logs to CloudWatch Logs |
+| CloudWatch Alarm | Alarm if ec2 instance becomes unhealthy |
+| S3 Bucket | S3 bucket  |
+
 
 ## Repository Structure
 
@@ -47,6 +50,8 @@ The goal of this design is to demonstrate secure network segmentation, controlle
 ├── compute.tf
 ├── alb.tf
 ├── nat.tf
+├── backup_s3.tf
+├── monitoring.tf
 ├── outputs.tf
 ├── user_data/
 │   └── apache.sh
@@ -299,7 +304,6 @@ Application instances are not directly internet-accessible.
 
 | Priority | Improvement | Reason |
 |---|---|---|
-| P1 | Add CloudWatch alarm for unhealthy ALB targets | Faster detection of application outages |
 | P1 | Add HTTPS listener with ACM certificate | Protect traffic in transit |
 | P1 | Use SSM Session Manager instead of SSH | Reduce public SSH exposure and remove need to manage private keys |
 | P1 | Add multi-AZ application subnets | Improve resilience of the application tier |
