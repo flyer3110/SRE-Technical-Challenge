@@ -8,7 +8,7 @@ The goal of this design is to demonstrate secure network segmentation, controlle
 
 ## Architecture Diagram
 
-![Technical Architecture Diagram](tech_arch_diagram.png)
+![Technical Architecture Diagram](./diagrams/architecture.png)
 
 ### High-Level Flow
 
