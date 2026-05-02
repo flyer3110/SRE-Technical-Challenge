@@ -1,5 +1,10 @@
 locals {
   nat_public_subnet_id = values(module.vpc.public_subnets)[0]
+
+  private_route_table_ids = {
+    application = module.vpc.private_route_table_ids[0]
+    backend     = module.vpc.private_route_table_ids[1]
+  }
 }
 
 resource "aws_eip" "nat" {
@@ -23,21 +28,8 @@ resource "aws_nat_gateway" "app" {
   ]
 }
 
-data "aws_route_tables" "private" {
-  vpc_id = module.vpc.vpc_id
-
-  filter {
-    name   = "tag:Name"
-    values = ["poc-private-*"]
-  }
-
-  depends_on = [
-    module.vpc
-  ]
-}
-
 resource "aws_route" "private_nat_gateway" {
-  for_each = toset(data.aws_route_tables.private.ids)
+  for_each = local.private_route_table_ids
 
   route_table_id         = each.value
   destination_cidr_block = "0.0.0.0/0"

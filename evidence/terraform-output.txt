@@ -1,4 +1,4 @@
-alb_dns_name = "internal-sre-app-alb-51980652.us-east-1.elb.amazonaws.com"
+alb_dns_name = "internal-sre-app-alb-624780143.us-east-1.elb.amazonaws.com"
 application_asg_name = "sre-app-asg"
-management_public_ip = "<redacted-public-ip>"
-vpc_id = "vpc-0488116e0e985074f"
+management_public_ip = "44.201.57.189"
+vpc_id = "vpc-03f7594e5a0c157a0"

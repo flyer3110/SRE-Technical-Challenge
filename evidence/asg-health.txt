@@ -1,0 +1,10 @@
+ASG Capacity:
+2	2	6
+
+ASG Instances:
+-------------------------------------------------
+|           DescribeAutoScalingGroups           |
++----------------------+-------------+----------+
+|  i-04df9f2fbafe4a719 |  InService  |  Healthy |
+|  i-07a2e87d5e177d129 |  InService  |  Healthy |
++----------------------+-------------+----------+

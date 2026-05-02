@@ -2,7 +2,7 @@
     "TargetHealthDescriptions": [
         {
             "Target": {
-                "Id": "<app-instance-1>",
+                "Id": "i-07a2e87d5e177d129",
                 "Port": 80
             },
             "HealthCheckPort": "80",
@@ -17,7 +17,7 @@
         },
         {
             "Target": {
-                "Id": "<app-instance-2>",
+                "Id": "i-04df9f2fbafe4a719",
                 "Port": 80
             },
             "HealthCheckPort": "80",
