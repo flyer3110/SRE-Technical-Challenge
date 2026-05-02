@@ -50,7 +50,8 @@ The goal of this design is to demonstrate secure network segmentation, controlle
 ├── outputs.tf
 ├── user_data/
 │   └── apache.sh
-├── tech_arch_diagram.png
+└── diagrams/
+    ├── architecture.png
 └── evidence/
     ├── terraform-output.txt
     ├── alb-curl-test.txt
@@ -94,8 +95,8 @@ Example:
 
 ```hcl
 aws_region       = "us-east-1"
-allowed_ssh_cidr = "96.231.251.189/32"
-key_name         = "mikeg_key3"
+allowed_ssh_cidr = "USER_IP/32"
+key_name         = "USER_KEY"
 ```
 
 `terraform.tfvars` is intentionally ignored by Git so local IPs and key pair names are not committed.
