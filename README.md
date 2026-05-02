@@ -422,15 +422,23 @@ Troubleshooting steps:
 5. Check cloud-init logs for user data errors.
 6. Confirm private subnet instances have outbound access through NAT Gateway.
 
-### Restore Data if an S3 Bucket Were Deleted
+### Restore Data if the S3 Backup Bucket Were Deleted or Objects Were Deleted
 
-This deployment does not currently create an S3 bucket. If an S3 bucket were added for backups or static assets, the recovery approach would be:
+This deployment creates an S3 backup bucket with versioning, encryption, and public access block enabled.
 
-1. Enable S3 versioning.
-2. Enable lifecycle policies.
-3. Optionally enable cross-region replication.
-4. If an object is deleted, remove the delete marker or restore a previous object version.
-5. If the bucket itself is deleted, recreate it through Terraform and restore objects from backup or replicated copies.
+If an object is deleted:
+
+1. List object versions.
+2. Identify the latest non-delete-marker version.
+3. Restore the previous object version or remove the delete marker.
+4. Validate that the restored object is accessible.
+
+If the bucket itself is deleted:
+
+1. Recreate the bucket with Terraform.
+2. Restore objects from an external backup source, replicated bucket, or retained local copy.
+3. Re-enable versioning, encryption, and public access block through Terraform.
+4. Validate bucket policy and object access.
 
 ## Evidence of Deployment
 
