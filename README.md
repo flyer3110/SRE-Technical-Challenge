@@ -442,34 +442,25 @@ If the bucket itself is deleted:
 
 ## Evidence of Deployment
 
-Deployment evidence is stored in the `evidence/` directory.
+Deployment evidence is stored in the `evidence/` directory:
 
-Recommended evidence files:
+- [Terraform outputs](evidence/terraform-output.txt)
+- [ALB curl test](evidence/alb-curl-test.txt)
+- [Target health](evidence/target-health.txt)
+- [ASG health](evidence/asg-health.txt)
+- [CloudWatch alarms](evidence/cloudwatch-alarms.txt)
 
-```text
-evidence/terraform-output.txt
-evidence/alb-curl-test.txt
-evidence/target-health.txt
-```
+## Validation Results
 
-### Successful ALB Test
+The environment was deployed successfully and validated with the following checks:
 
-The application was successfully tested from the Management EC2 instance using the internal ALB DNS name. The ALB returned the Apache page running on a private application EC2 instance.
-
-Example result:
-
-```html
-<html>
-  <head>
-    <title>SRE Technical Challenge</title>
-  </head>
-  <body>
-    <h1>SRE Technical Challenge</h1>
-    <p>Apache is running on RHEL 9.</p>
-    <p>Hostname: ip-10-1-2-xxx.ec2.internal</p>
-  </body>
-</html>
-```
+- Terraform completed successfully.
+- Management EC2 was reachable over SSH from the approved `/32` IP.
+- Internal ALB was reachable from the Management EC2.
+- ALB returned the Apache test page from a private application EC2 instance.
+- ALB target group reported healthy application targets.
+- CloudWatch alarms were created for ALB target health and ASG capacity.
+- S3 backup bucket was created with versioning, encryption, and public access block.
 
 ## Cleanup
 
