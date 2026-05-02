@@ -32,9 +32,9 @@ The goal of this design is to demonstrate secure network segmentation, controlle
 | Auto Scaling Group | Desired 2, Minimum 2, Maximum 6 instances |
 | Load Balancer | Internal Application Load Balancer |
 | NAT Gateway | Provides outbound internet access for private subnets |
+| CloudWatch Alarms | Monitors ALB unhealthy targets and ASG capacity |
+| S3 Backup Bucket | Versioning, encryption, and public access block enabled |
 | Logging | VPC Flow Logs to CloudWatch Logs |
-| CloudWatch Alarm | Alarm if ec2 instance becomes unhealthy |
-| S3 Bucket | S3 bucket  |
 
 
 ## Repository Structure
@@ -294,11 +294,11 @@ Application instances are not directly internet-accessible.
 
 ### Operational Shortcomings
 
-- No automated backup strategy is currently implemented.
-- No CloudWatch alarms are configured for unhealthy ALB targets, EC2 CPU, or ASG capacity.
+- No centralized host-level Apache log collection is configured yet.
 - No CI/CD pipeline is configured for Terraform validation or deployment.
-- No automated patching strategy is defined.
-- No incident notification system is configured.
+- No automated OS patching strategy is defined.
+- No incident notification system, such as SNS or PagerDuty, is attached to alarms yet.
+- The S3 backup bucket is configured with versioning, encryption, and public access block, but no application backup workflow writes data to it yet.
 
 ## Improvement Plan
 
@@ -332,6 +332,14 @@ Security groups were configured to limit access paths:
 ### 3. ASG Health Check Grace Period
 
 The ASG health check grace period was increased to allow more time for user data bootstrapping before the load balancer marks instances unhealthy.
+
+### 4. CloudWatch Alarms
+
+CloudWatch alarms were added for ALB unhealthy target count and ASG capacity. These alarms improve operational visibility and help detect application availability issues.
+
+### 5. S3 Backup Bucket
+
+An S3 backup bucket was added with versioning, server-side encryption, and public access block. This supports the restore runbook and provides a foundation for future backup workflows.
 
 ## Runbook
 
