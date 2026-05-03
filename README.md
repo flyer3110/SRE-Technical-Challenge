@@ -24,6 +24,7 @@ The goal of this design is to demonstrate secure network segmentation, controlle
 |---|---|
 | Region | `us-east-1` |
 | VPC | `10.1.0.0/16` |
+| Avability Zones | AZs cover subents|
 | Management Subnet | Public subnet `10.1.1.0/24` |
 | Application Subnet | Private subnet `10.1.2.0/24` |
 | Backend Subnet | Private subnet `10.1.3.0/24` |
