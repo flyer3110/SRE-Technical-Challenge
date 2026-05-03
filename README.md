@@ -24,10 +24,10 @@ The goal of this design is to demonstrate secure network segmentation, controlle
 |---|---|
 | Region | `us-east-1` |
 | VPC | `10.1.0.0/16` |
-| Availability Zones | Designed for multi-AZ deployment for high availability |
 | Management Subnet | Public subnet `10.1.1.0/24` |
 | Application Subnet | Private subnet `10.1.2.0/24` |
 | Backend Subnet | Private subnet `10.1.3.0/24` |
+| Availability Zones | Designed for multi-AZ deployment for high availability |
 | Management EC2 | RHEL 9 instance used for SSH/jump-host access |
 | Application EC2s | RHEL 9 Apache web servers deployed through an Auto Scaling Group |
 | Auto Scaling Group | Desired 2, Minimum 2, Maximum 6 instances |
