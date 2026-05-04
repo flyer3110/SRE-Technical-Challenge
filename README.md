@@ -1,3 +1,6 @@
+![Terraform](https://img.shields.io/badge/IaC-Terraform-623CE4)
+![AWS](https://img.shields.io/badge/Cloud-AWS-orange)
+
 # SRE AWS Technical Challenge
 
 ## Solution Overview
