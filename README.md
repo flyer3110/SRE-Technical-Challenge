@@ -92,7 +92,7 @@ cp terraform.tfvars.example terraform.tfvars
 Update `terraform.tfvars` with your values:
 
 ```hcl
-aws_region       = "us-east-1"
+aws_region       = "AWS_REGION"
 allowed_ssh_cidr = "YOUR_PUBLIC_IP/32"
 key_name         = "YOUR_EC2_KEYPAIR_NAME"
 ```
